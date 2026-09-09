@@ -1,6 +1,4 @@
-
 var prompt = require('prompt-sync')({sigint: true});
-
 const trips = [
     {
         id: 1,
@@ -183,19 +181,7 @@ const trips = [
         availableSeats: 50
     }
 ];
-    //le tableau de TRAJET  de train
-function trajets() {
-    for (let i = 0; i < trips.length; i++) {
-        console.log("#"+trips[i]["id"]+" "+trips[i]["departure"]+" -----→  "+trips[i]["destination"]);
-        console.log("Depart :"+trips[i]["departureTime"]);
-        console.log("Arrivee :"+trips[i]["arrivalTime"]);
-        console.log("Prix :"+trips[i]["price"]+" DH");
-        console.log("Places disponibles :"+trips[i]["availableSeats"]);
-        console.log("   ");
-        console.log("   ");
-    }
-    return
-}
+let client = {};
 
 function isAlpha(value) {
     let alpha = /^[a-zA-Z ]+$/;
@@ -290,63 +276,7 @@ function clients() {
     console.log("Place : " + ticket.seat);
     console.log("Prix : " + ticket.price + " DH");
     console.log();
+    
 }
 
-function main() {
-    let n;
-    do { // PAGE PRINSIPALE
-        console.log("===============================");
-        console.log("       RAILWAY MANAGER      ");
-        console.log("===============================");
-        console.log("1. Afficher les trajets");
-        console.log("2. Acheter un ticket");
-        console.log("3. Afficher les tickets");
-        console.log("4. Annuler un ticket");
-        console.log("5. Rechercher un ticket");
-        console.log("6. Filtrer les trajets");
-        console.log("7. Trier les trajets");
-        console.log("8. Quitter");
-        // Le choix de client
-        n = Number(prompt("Tapez un choix (1-8)"))
-        switch (n) {
-            case 1://les trajets
-            console.log("=== TRAJETS DISPONIBLES ===");
-            trajets()
-            break
-            case 2:
-                console.log("    ===================      ");
-                console.log("      Acheter un ticket      ");
-                console.log("    ====================     ");
-                clients()
-                console.log("voici le ticket ");
-                console.log(tickets);
-                
-                
-                break;
-            case 3:
-                console.log("    === TICKETS ===   \n   ");
-                
-                break;
-            case 4:
-                
-                break;
-            case 5:
-                
-                break;
-             case 6:
-                
-                break;
-               
-             case 7:
-                
-                break;
-            case 8: break;
-        
-            default:
-                console.log("Votre reposne n'etait pas acceptable, Svp donne moi une valeur entre 1 et 8");
-                break;
-        }
-    } while (n!=8)
-}
-main()
-    
+clients();
