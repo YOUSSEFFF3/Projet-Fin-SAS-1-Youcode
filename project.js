@@ -343,6 +343,28 @@ function annulation() {
         console.log("Ticket introuvable.");
     }
 }
+function recherch() {
+    let yourname= prompt("Type your name  pls : ")
+    let founnd=false 
+      for (let u = 0; u < tickets.length; u++) {
+        if (tickets[u]["name"]=== yourname ) {
+            founnd=true
+            console.log("\nNom du passager :"+yourname);
+            console.log("\n\n");
+            console.log("Ticket # "+tickets[u]["id"]);
+            console.log("Passager : "+yourname);
+            console.log("Trajet : "+tickets[u]["departure"]+" --> "+tickets[u]["destination"]);
+            console.log("Place : " +tickets[u]["seat"]);
+            console.log("Prix : "+tickets[u]["price"]);                   
+           
+        }
+        
+      }
+      // Vérifier 
+    if (founnd === false) {
+        console.log("name introuvable.");
+    }
+}
 function main() {
     let n;
     do { // PAGE PRINSIPALE
@@ -374,16 +396,17 @@ function main() {
                 break;
 
             case 3:// affichage du tikcet 
-                console.log("  \n  === TICKETS ===   \n   ");
+                console.log("  \n\n  === TICKETS ===   \n\n   ");
                 afficher()
                 break;
 
             case 4:
-                console.log("  \n  === annulation ===   \n   ");
+                console.log("  \n\n  === annulation ===   \n\n   ");
                 annulation()
                 break;
             case 5:
-                
+                console.log("  \n\n  === recherche ===   \n\n   ");
+                recherch()
                 break;
              case 6:
                 
