@@ -278,7 +278,7 @@ function clients() {
 
 
     // Display ticket
-    console.log("Ticket acheté avec succès.\n");
+    console.log("\nTicket acheté avec succès.\n");
     console.log("Ticket #" + ticket.id);
     console.log("Passager : " + ticket.name);
     console.log(
@@ -290,6 +290,15 @@ function clients() {
     console.log("Place : " + ticket.seat);
     console.log("Prix : " + ticket.price + " DH");
     console.log();
+}
+function afficher() {
+    for (let e = 0; e < tickets.length; e++) {
+        console.log("Ticket # "+tickets[e].id); 
+        console.log("Passager :  "+tickets[e].name);
+        console.log("Trajet : "+tickets[e].departure+" --> "+tickets[e].destination); 
+        console.log("Place : "+tickets[e].seat);
+        console.log("Prix : "+tickets[e].price+" DH \n ");
+    } 
 }
 
 function main() {
@@ -313,20 +322,20 @@ function main() {
             console.log("=== TRAJETS DISPONIBLES ===");
             trajets()
             break
-            case 2:
+            case 2:// la chat
                 console.log("    ===================      ");
                 console.log("      Acheter un ticket      ");
                 console.log("    ====================     ");
                 clients()
                 console.log("voici le ticket ");
                 console.log(tickets);
-                
-                
                 break;
-            case 3:
-                console.log("    === TICKETS ===   \n   ");
-                
+
+            case 3:// affichage du tikcet 
+                console.log("  \n  === TICKETS ===   \n   ");
+                afficher()
                 break;
+
             case 4:
                 
                 break;
