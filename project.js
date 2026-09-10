@@ -292,6 +292,33 @@ function chifferdaffaires() {
     }
   console.log("Chiffre d'affaires total : "+somme+" DH");   
 }
+function Trajetleplusvendu() {
+let conter=[]
+let ville={}
+let somee=0
+let maxsome=0
+for (let i = 0; i < tickets.length; i++) {
+   for (let j = 0; j < tickets.length; j++) {
+    if (conter.includes(tickets[i].id)) {
+        break   
+    }
+    if (tickets[i].id===tickets[j].id) {
+        somee++
+    }
+   if (somee>maxsome) {
+    maxsome=somee
+    ville.departure=tickets[i].departure
+    ville.destination=tickets[i].destination
+   }}
+   somee=0
+    if (!conter.includes(tickets[i].id)) {
+        conter.push(tickets[i].id)  
+    }
+}
+console.log("\n\nTrajet le plus vendu :\n\n");
+console.log(ville.departure+" --> "+ville.destination);
+console.log(maxsome+" tickets vendus");
+}
 function afficher() {
     for (let e = 0; e < tickets.length; e++) {
         console.log("Ticket # "+tickets[e].id); 
@@ -438,6 +465,7 @@ function main() {
                 console.log("Nombre total de tickets vendus : "+tickets.length);
               console.log("  \n\n  === chiffere d'affaire ===   \n\n   ");
                 chifferdaffaires()
+                Trajetleplusvendu()
                 break;
 
             case 4:
