@@ -285,6 +285,13 @@ function clients() {
     console.log("Prix : " + ticket.price + " DH");
     console.log();
 }
+function chifferdaffaires() {
+    let somme=0;
+    for (let i = 0; i < tickets.length; i++) {
+        somme+=tickets[i].price
+    }
+  console.log("Chiffre d'affaires total : "+somme+" DH");   
+}
 function afficher() {
     for (let e = 0; e < tickets.length; e++) {
         console.log("Ticket # "+tickets[e].id); 
@@ -427,6 +434,10 @@ function main() {
             case 3:// affichage du tikcet 
                 console.log("  \n\n  === TICKETS ===   \n\n   ");
                 afficher()
+                console.log("  \n\n  === total de tickets ===   \n\n   ");
+                console.log("Nombre total de tickets vendus : "+tickets.length);
+              console.log("  \n\n  === chiffere d'affaire ===   \n\n   ");
+                chifferdaffaires()
                 break;
 
             case 4:
