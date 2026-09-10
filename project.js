@@ -214,13 +214,13 @@ function clients() {
             prompt("Type the ID of your destination please: ")
         );
 
-        for (let j = 0; j < trips.length; j++) {
+        for (let i = 0; i < trips.length; i++) {
 
-            if (trips[j].id === tripId) {
+            if (trips[i].id === tripId) {
 
                 found = true;
 
-                if (trips[j].availableSeats <= 0) {
+                if (trips[i].availableSeats <= 0) {
                     console.log("Train complet.");
                     found = false;
                     break;
@@ -229,17 +229,17 @@ function clients() {
                 console.log("Trajet trouvé !");
 
                 
-                ticket.tripId = trips[j].id
-                ticket.departure = trips[j].departure
-                ticket.destination = trips[j].destination
-                ticket.departureTime = trips[j].departureTime
-                ticket.arrivalTime = trips[j].arrivalTime
-                ticket.price = trips[j].price
+                ticket.tripId = trips[i].id
+                ticket.departure = trips[i].departure
+                ticket.destination = trips[i].destination
+                ticket.departureTime = trips[i].departureTime
+                ticket.arrivalTime = trips[i].arrivalTime
+                ticket.price = trips[i].price
                 
 
-                ticket.seat = 51 - trips[j].availableSeats;
+                ticket.seat = 51 - trips[i].availableSeats;
 
-                trips[j].availableSeats--;
+                trips[i].availableSeats--;
 
                 break;
             }
@@ -302,16 +302,16 @@ function annulation() {
         prompt("Type the ID of your ticket pls")
     );
 
-    for (let y = 0; y < tickets.length; y++) {
+    for (let i = 0; i < tickets.length; i++) {
 
-        if (Identifiant === tickets[y]["id"]) {
+        if (Identifiant === tickets[i]["id"]) {
 
             foundd = true;
 
             // Trouver le trajet associé
             for (let x = 0; x < trips.length; x++) {
 
-                if (trips[x]["id"] === tickets[y]["id"]) {
+                if (trips[x]["id"] === tickets[i]["id"]) {
 
                     // Augmenter les places disponibles
                     trips[x]["availableSeats"]++;
@@ -321,10 +321,10 @@ function annulation() {
             }
 
             // Afficher l'identifiant avant de supprimer le ticket
-            console.log("\nIdentifiant du ticket : " + tickets[y]["id"]);
+            console.log("\nIdentifiant du ticket : " + tickets[i]["id"]);
 
             // Supprimer le ticket
-            tickets.splice(y, 1);
+            tickets.splice(i, 1);
 
             console.log("\nTicket annulé avec succès.");
 
@@ -363,10 +363,10 @@ function filter() {
     let ville=(prompt("Tapez la ville de depart : "))
     let foound=false
     console.log("Ville de départ : " + ville + "\n\n\n");  
-    for (let t = 0; t < trips.length; t++) {
-        if (trips[t]["departure"] === ville) {
+    for (let i = 0; i < trips.length; i++) {
+        if (trips[i]["departure"] === ville) {
             foound=true
-            console.log( ville+ " --> " + trips[t]["destination"] );
+            console.log( ville+ " --> " + trips[i]["destination"] );
         }
     }
     if (foound===false) {
@@ -374,6 +374,25 @@ function filter() {
            
     }    
             
+}
+function trier() {
+    let croissant= trips
+    for (let i= 0; i < croissant.length; i++) {
+        for (let j = 0; j < croissant.length-1; j++) {
+            if (croissant[j].price>croissant[j+1].price) {
+                let w = croissant[j].price 
+                croissant[j].price = croissant[j+1].price
+                croissant[j+1].price = w
+            }
+            
+        }
+    }for (let e = 0; e < croissant.length; e++) {
+        console.log(croissant[e].destination+
+            " --> "+croissant[e].destination+" : "+
+        croissant[e].price+" DH");
+        
+        
+    } 
 }
 function main() {
     let n;
@@ -423,7 +442,8 @@ function main() {
                 filter()
                 break;
              case 7:
-                
+                console.log("  \n\n  === trier ===   \n\n   ");
+                trier()
                 break;
             case 8: break;
         
