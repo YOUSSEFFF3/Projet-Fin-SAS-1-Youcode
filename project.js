@@ -203,19 +203,20 @@ function isAlpha(value) {
 }
 
 const tickets = [];
+let ticketCounter = 1
 
 function clients() {
-    let client = {};
+    let ticket = {};
     let found = false;
 
     do {
-        client.id = Number(
+        let tripId = Number(
             prompt("Type the ID of your destination please: ")
         );
 
         for (let j = 0; j < trips.length; j++) {
 
-            if (trips[j].id === client.id) {
+            if (trips[j].id === tripId) {
 
                 found = true;
 
@@ -227,16 +228,16 @@ function clients() {
 
                 console.log("Trajet trouvé !");
 
-                client.trip = {
-                    id: trips[j].id,
-                    departure: trips[j].departure,
-                    destination: trips[j].destination,
-                    departureTime: trips[j].departureTime,
-                    arrivalTime: trips[j].arrivalTime,
-                    price: trips[j].price
-                };
+                
+                ticket.tripId = trips[j].id
+                ticket.departure = trips[j].departure
+                ticket.destination = trips[j].destination
+                ticket.departureTime = trips[j].departureTime
+                ticket.arrivalTime = trips[j].arrivalTime
+                ticket.price = trips[j].price
+                
 
-                client.seat = 51 - trips[j].availableSeats;
+                ticket.seat = 51 - trips[j].availableSeats;
 
                 trips[j].availableSeats--;
 
@@ -254,30 +255,23 @@ function clients() {
 
 
     do {
-        client.name = prompt("Type your full name please: ");
+        clientName = prompt("Type your full name please: ");
 
-        if (!isAlpha(client.name)) {
+        if (!isAlpha(clientName)) {
             console.log("Votre réponse n'était pas acceptable");
         }
 
-    } while (!isAlpha(client.name));
+    } while (!isAlpha(clientName));
 
 
-    // Create the ticket
-    let ticket = {
-        id: client.id,
-        name: client.name,
-        departure: client.trip.departure,
-        destination: client.trip.destination,
-        seat: client.seat,
-        price: client.trip.price
-    };
+    // le ticket de client
+    ticket.name = clientName
+    ticket.id = ticketCounter++
 
-    // Add ticket to tickets array
+    // ajoute le ticket dans la liste des tickets 
     tickets.push(ticket);
 
 
-    // Display ticket
     console.log("\nTicket acheté avec succès.\n");
     console.log("Ticket #" + ticket.id);
     console.log("Passager : " + ticket.name);
@@ -305,7 +299,7 @@ function annulation() {
     let foundd = false;
 
     Identifiant = Number(
-        prompt("Type the ID of your ticket pls : ")
+        prompt("Type the ID of your ticket pls")
     );
 
     for (let y = 0; y < tickets.length; y++) {
@@ -425,9 +419,9 @@ function main() {
                 recherch()
                 break;
              case 6:
+                console.log("  \n\n  === filter ===   \n\n   ");
                 filter()
                 break;
-               
              case 7:
                 
                 break;
