@@ -299,20 +299,20 @@ let somee=0
 let maxsome=0
 for (let i = 0; i < tickets.length; i++) {
    for (let j = 0; j < tickets.length; j++) {
-    if (conter.includes(tickets[i].id)) {
+    if (conter.includes(tickets[i].tripId)) {
         break   
     }
-    if (tickets[i].id===tickets[j].id) {
+    if (tickets[i].tripId===tickets[j].tripId) {
         somee++
-    }
+    }}
    if (somee>maxsome) {
     maxsome=somee
     ville.departure=tickets[i].departure
     ville.destination=tickets[i].destination
-   }}
+   }
    somee=0
-    if (!conter.includes(tickets[i].id)) {
-        conter.push(tickets[i].id)  
+    if (!conter.includes(tickets[i].tripId)) {
+        conter.push(tickets[i].tripId)  
     }
 }
 console.log("\n\nTrajet le plus vendu :\n\n");
